@@ -8,8 +8,8 @@ class Main {
         try {
             String result = calc(input);
             System.out.println("Результат: " + result);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        } catch (Exception error) {
+            System.out.println(error.getMessage());
         }
     }
 
@@ -45,7 +45,7 @@ class Main {
         try {
             a = Integer.parseInt(parts[0]);
             b = Integer.parseInt(parts[1]);
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException error) {
             throw new Exception("Оба операнда должны быть целыми числами.");
         }
 
@@ -56,7 +56,7 @@ class Main {
 
         int result;
 
-        // Выполняем операцию
+        // Выполняем арифметическую операцию
         switch (operator) {
             case "+":
                 result = a + b;
@@ -73,6 +73,11 @@ class Main {
                 }
                 result = a / b;
                 break;
+            /*
+            Блок 'default' отрабатывать не должен, т.к. оператор уже проверен
+            на соответствие одному из допустимых значений. Но наличие этого блока
+            кода гарантирует, что любая непредвиденная ситуация будет обнаружена.
+             */
             default:
                 throw new Exception("Неизвестная ошибка.");
         }
